@@ -8,13 +8,16 @@ export default {
   name: 'link-options',
   props: {
     text: {
-      require: true,
       type: String
+    },
+    value: {
+      type: Number
     }
   },
   methods: {
-    handleClick () {
+    handleClick (e) {
       console.log(this.text)
+      this.$emit('dispatch-click', e)
     }
   }
 }

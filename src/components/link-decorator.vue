@@ -4,7 +4,7 @@
 
 <script>
 import Vue from 'vue'
-import { Prop, Component } from 'vue-property-decorator'
+import { Prop, Component, Emit } from 'vue-property-decorator'
 
 @Component
 export default class LinkDecorator extends Vue {
@@ -13,8 +13,15 @@ export default class LinkDecorator extends Vue {
   })
   text
 
-  handleClick() {
+  @Prop({
+    type: Number
+  })
+  value
+
+  @Emit('dispatch-click')
+  handleClick(e) {
     console.log('link-decorator', this.text)
+    return e
   }
 }
 </script>
